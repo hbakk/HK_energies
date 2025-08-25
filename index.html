@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HK_energies | Futuristic Dashboard (Fully Linked)</title>
+    
+    <link rel="manifest" href="/HK_energies/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="/HK_energies/icons/icon-192.png">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+        <style>
+        /* Base styles and font smoothing */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8FAFC; /* Soft Slate Gray */
+            color: #1E293B; /* slate-800 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Sleek Dark Sidebar */
+        .sidebar {
+            background-color: #111827; /* Dark Gray/Navy */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Glowing Amber/Yellow Sidebar Links */
+        .sidebar-link {
+            position: relative;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        .sidebar-link:hover {
+            color: #ffffff;
+            background-color: rgba(245, 158, 11, 0.1); /* Amber transparent */
+        }
+        .sidebar-link:hover::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #F59E0B; /* Amber */
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 15px #F59E0B;
+        }
+        .sidebar-link.active {
+            color: #ffffff;
+            background-color: rgba(245, 158, 11, 0.2);
+            font-weight: 600;
+        }
+        .sidebar-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #F59E0B;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 15px #F59E0B;
+        }
+
+        /* Animated Hero Gradient with Amber */
+        .hero-gradient {
+            background: linear-gradient(135deg, #F59E0B, #4338CA);
+            background-size: 200% 200%;
+            animation: gradient-flow 8s ease infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Entry animation for cards */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.7s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="flex min-h-screen">
+                <aside id="sidebar" class="w-64 flex-col fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 z-50 sidebar">
+                        <div class="p-6 flex items-center space-x-4 border-b border-gray-700/50">
+                <div class="p-2 bg-amber-500 rounded-xl shadow-lg shadow-amber-500/30">
+                    <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-white tracking-wider">HK_energies</h1>
+            </div>
+
+                        <nav class="flex-1 px-4 py-8 space-y-3">
+                <a href="index.html" class="sidebar-link active flex items-center px-4 py-3 rounded-xl">
+                    <svg class="h-6 w-6 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="Solar Profitability.html" class="sidebar-link flex items-center px-4 py-3 text-slate-300 rounded-xl">
+                    <svg class="h-6 w-6 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+                    <span>Solar Profitability</span>
+                </a>
+                <a href="Storage Cost.html" class="sidebar-link flex items-center px-4 py-3 text-slate-300 rounded-xl">
+                    <svg class="h-6 w-6 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H21V8.25A2.25 2.25 0 0018.75 6H5.25A2.25 2.25 0 003 8.25v2.25M4.5 10.5h-2.25C1.625 10.5 1.125 11.004 1.125 11.625v2.25c0 .621.504 1.125 1.125 1.125H4.5v-3.75z" /></svg>
+                    <span>Storage Cost</span>
+                </a>
+                <a href="Full Analysis.html" class="sidebar-link flex items-center px-4 py-3 text-slate-300 rounded-xl">
+                    <svg class="h-6 w-6 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1.125-1.5M12 16.5v5.25m0 0l-1.125-1.5m1.125 1.5l1.125-1.5" /></svg>
+                    <span>Full Analysis</span>
+                </a>
+                 <a href="Battery Parameters.html" class="sidebar-link flex items-center px-4 py-3 text-slate-300 rounded-xl">
+                    <svg class="h-6 w-6 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.438.995s.145.755.438.995l1.003.827c.48.398.668 1.03.26 1.431l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.127c-.331.183-.581.495-.644.87l-.213 1.281c-.09.543-.56.94-1.11.94h-2.593c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.063-.374-.313-.686-.645-.87a6.52 6.52 0 01-.22-.127c-.324-.196-.72-.257-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.437-.995s-.145-.755-.437-.995l-1.004-.827a1.125 1.125 0 01-.26-1.431l1.296-2.247a1.125 1.125 0 011.37-.49l1.217.456c.355.133.75.072 1.076-.124.072-.044.146-.087.22-.127.331-.183.581-.495.644-.87l.213-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    <span>Parameters</span>
+                </a>
+            </nav>
+        </aside>
+
+                <div class="flex-1 md:ml-64">
+                        <header class="bg-white/80 backdrop-blur-md sticky top-0 z-30 border-b border-slate-200/70">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="py-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <button id="hamburger-button" class="text-slate-500 hover:text-indigo-600 md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            </button>
+                            <h1 class="text-xl font-semibold text-slate-800 ml-4 md:ml-0">Dashboard</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+                        <main class="p-4 sm:p-6 lg:p-8">
+                <div class="max-w-7xl mx-auto">
+                                        <div class="text-center mb-20 py-24 px-6 hero-gradient rounded-3xl shadow-2xl shadow-amber-500/20 relative overflow-hidden">
+                        <div class="relative z-20">
+                            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg tracking-tight">
+                                Optimize Your <span class="text-white">Energy Future</span>
+                            </h1>
+                            <p class="text-indigo-100 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed opacity-90">
+                                Advanced tools to transform your solar and storage projects into sustainable successes.
+                            </p>
+                            <a href="#feature-cards" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-slate-800 bg-amber-400 hover:bg-amber-300 transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300 focus:ring-opacity-75">
+                                Explore Simulators
+                                <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" /></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                                        <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div class="glass-card p-8 rounded-3xl flex flex-col group animate-fade-in-up" style="animation-delay: 100ms;">
+                            <div class="mb-6 flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-lg shadow-amber-500/30">
+                                <svg class="h-9 w-9 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-3 tracking-tight">Solar Profitability</h2>
+                            <p class="text-slate-600 mb-7 flex-grow leading-relaxed">Estimate payback period and viability of your PV installation.</p>
+                            <a href="Solar Profitability.html" class="mt-auto bg-amber-500 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-amber-600 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-300">Run Calculation</a>
+                        </div>
+                        
+                                                <div class="glass-card p-8 rounded-3xl flex flex-col group animate-fade-in-up" style="animation-delay: 200ms;">
+                            <div class="mb-6 flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl shadow-lg shadow-blue-500/30">
+                                <svg class="h-9 w-9 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H21V8.25A2.25 2.25 0 0018.75 6H5.25A2.25 2.25 0 003 8.25v2.25M4.5 10.5h-2.25C1.625 10.5 1.125 11.004 1.125 11.625v2.25c0 .621.504 1.125 1.125 1.125H4.5v-3.75z" /></svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-3 tracking-tight">Storage Cost</h2>
+                            <p class="text-slate-600 mb-7 flex-grow leading-relaxed">Analyze the Levelized Cost of Storage (LCOS) for battery tech.</p>
+                            <a href="Storage Cost.html" class="mt-auto bg-indigo-500 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">Run Calculation</a>
+                        </div>
+
+                                                <div class="glass-card p-8 rounded-3xl flex flex-col group animate-fade-in-up" style="animation-delay: 300ms;">
+                            <div class="mb-6 flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl shadow-lg shadow-emerald-500/30">
+                                <svg class="h-9 w-9 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1.125-1.5M12 16.5v5.25m0 0l-1.125-1.5m1.125 1.5l1.125-1.5" /></svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-3 tracking-tight">Full Analysis</h2>
+                            <p class="text-slate-600 mb-7 flex-grow leading-relaxed">Optimize costs for a combined Solar + Battery system.</p>
+                            <a href="Full Analysis.html" class="mt-auto bg-emerald-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-400">Run Analysis</a>
+                        </div>
+
+                                                <div class="glass-card p-8 rounded-3xl flex flex-col group animate-fade-in-up" style="animation-delay: 400ms;">
+                            <div class="mb-6 flex items-center justify-center w-16 h-16 bg-gradient-to-br from-slate-400 to-slate-600 rounded-2xl shadow-lg shadow-slate-500/30">
+                               <svg class="h-9 w-9 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.438.995s.145.755.438.995l1.003.827c.48.398.668 1.03.26 1.431l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.127c-.331.183-.581.495-.644.87l-.213 1.281c-.09.543-.56.94-1.11.94h-2.593c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.063-.374-.313-.686-.645-.87a6.52 6.52 0 01-.22-.127c-.324-.196-.72-.257-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.437-.995s-.145-.755-.437-.995l-1.004-.827a1.125 1.125 0 01-.26-1.431l1.296-2.247a1.125 1.125 0 011.37-.49l1.217.456c.355.133.75.072 1.076-.124.072-.044.146-.087.22-.127.331-.183.581-.495.644-.87l.213-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-3 tracking-tight">Parameters</h2>
+                            <p class="text-slate-600 mb-7 flex-grow leading-relaxed">Configure detailed parameters for your energy storage systems.</p>
+                            <a href="Battery Parameters.html" class="mt-auto bg-gray-800 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-gray-400">Access Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+        <script>
+        const sidebar = document.getElementById('sidebar');
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        hamburgerButton.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+    </script>
+
+        <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/HK_energies/sw.js').then(reg => {
+            console.log('Service Worker registered. Scope is:', reg.scope);
+          }).catch(err => {
+            console.error('Service Worker registration failed:', err);
+          });
+        });
+      }
+    </script>
+
+</body>
+</html>
